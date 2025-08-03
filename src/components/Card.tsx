@@ -12,6 +12,7 @@ interface propsType {
     type: "tweet" | "doc" | "video",
     tag? : [tagType];
     date : string;
+    deleteURL?: string;
 }
 
 // interface dimensionsType {
@@ -44,7 +45,7 @@ export default function Card(props: propsType) {
                 </div>
                 <div className="flex gap-3 pt-1">
                     <ShareIcon size="xl" color="grey" />
-                    <DeleteIcon size="xl" color="grey" />
+                    <DeleteIcon size="xl" color="grey" url={props.deleteURL} />
                 </div>
             </div>
             <div className="overflow-y-auto h-40">
@@ -56,7 +57,7 @@ export default function Card(props: propsType) {
                 ))}
             </div>
             <div className="date justify-self-end">
-                <p className="text-gray-500 text-sm mt-2">{new Date(props.date).toLocaleDateString()}</p>
+                <p className="text-gray-500 text-sm mt-2">{new Date(props.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
             </div>
         </div>
     )

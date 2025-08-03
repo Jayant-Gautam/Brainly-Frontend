@@ -8,6 +8,7 @@ interface propsType {
     type : 'video' | 'doc' | 'tweet';
     tag : [tagType];
     date : string;
+    id : string;
 }
 
 export default function Content(props : propsType) {
@@ -39,7 +40,7 @@ function video(props : propsType) {
         <>
           <iframe className="w-full rounded-xl" src={url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </>
-      } type={props.type} tag={props.tag} date={props.date}/>
+      } type={props.type} tag={props.tag} date={props.date} deleteURL={`content/${props.id}`}/>
         </>
     )
 }
@@ -53,7 +54,7 @@ function doc(props : propsType) {
         <>
           <div dangerouslySetInnerHTML={{ __html: props.data }}></div> 
         </>
-      } type={props.type} tag={props.tag} date={props.date}/>
+      } type={props.type} tag={props.tag} date={props.date} deleteURL={`content/${props.id}`}/>
         </>
     )
 }
@@ -69,7 +70,7 @@ function tweet(props : propsType) {
                 {props.data}
             </p>
         </>
-      } type={props.type} tag={props.tag} date={props.date}/>
+      } type={props.type} tag={props.tag} date={props.date} deleteURL={`content/${props.id}`}/>
         </>
     )
 }

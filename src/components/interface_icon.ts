@@ -1,6 +1,7 @@
 export interface iconPropsType {
     size : "sm" | "md" | "lg" | "xl",
     color : string,
+    url? : string,
 }
 
 interface sizeType {
