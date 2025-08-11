@@ -7,3 +7,7 @@ export interface tagType {
     title : string,
     _id : string
 }
+
+export interface filterType {
+    type : 'doc' | 'video' | 'tweet' | '',
+}
