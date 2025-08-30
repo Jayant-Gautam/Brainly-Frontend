@@ -5,6 +5,8 @@ import Button from "./components/Button";
 import { url } from "./components/config";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function addCard() {
     const [title, setTitle] = useState<string>("");
     const [data, setData] = useState<string>("");
@@ -68,47 +70,112 @@ export default function addCard() {
         setTags("");
         navigate('/home')
     }
-
     return (
         <>
-            <form onSubmit={
-                handleSubmit
-            } >
-                <div className="title">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" id="title" value={title} onChange={handleTitle} className="border-1" />
+            <div className="flex items-center justify-center h-16 bg-gradient-to-r from-purple-800 to-purple-100 text-white text-2xl font-semibold">
+                    Add Card
+            </div>       
+            <form
+                onSubmit={handleSubmit}
+                className="max-w-lg mx-auto mt-10 p-8 bg-white rounded-xl shadow-xl hover:shadow-2xl flex flex-col gap-6"
+            >
+                <div className="title flex flex-col gap-1">
+                    <label htmlFor="title" className="font-semibold text-gray-800 mb-1">
+                        Title
+                    </label>
+                    <input
+                        type="text"
+                        id="title"
+                        value={title}
+                        onChange={handleTitle}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md text-base bg-gray-50 focus:outline-none focus:border-indigo-500"
+                    />
                 </div>
-                <div className="type">
-                    <label htmlFor="type">Type</label>
-                    <select name="type" id="type" onChange={handleType} className="border-1">
-                        <option value="" disabled selected>Select Type</option>
+                <div className="type flex flex-col gap-1">
+                    <label htmlFor="type" className="font-semibold text-gray-800 mb-1">
+                        Type
+                    </label>
+                    <select
+                        name="type"
+                        id="type"
+                        onChange={handleType}
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md text-base bg-gray-50 focus:outline-none focus:border-indigo-500"
+                        value={type}
+                    >
+                        <option value="" disabled>
+                            Select Type
+                        </option>
                         <option value="doc">Doc</option>
                         <option value="tweet">Tweet</option>
                         <option value="video">Video</option>
                     </select>
                 </div>
-                {type == 'tweet' && <TweetInput data={data} setData={setData}/>}
-                {type === 'doc' && <DocInput data={data} setData={setData}/>}
-                {type === 'video' && <VideoInput data={data} setData={setData}/>}
-                <div className="tags">
-                    <label htmlFor="tags">Tags</label>
-                    <input value={tags} onChange={handleTags} type="text" id="tags" placeholder="Add tags separated by commas" />
+                {type == 'tweet' && <TweetInput data={data} setData={setData} />}
+                {type === 'doc' && <DocInput data={data} setData={setData} />}
+                {type === 'video' && <VideoInput data={data} setData={setData} />}
+                <div className="tags flex flex-col gap-1">
+                    <label htmlFor="tags" className="font-semibold text-gray-800 mb-1">
+                        Tags
+                    </label>
+                    <input
+                        value={tags}
+                        onChange={handleTags}
+                        type="text"
+                        id="tags"
+                        placeholder="Add tags separated by commas"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md text-base bg-gray-50 focus:outline-none focus:border-indigo-500"
+                    />
                 </div>
-                <Button onClick={() => {}} type="submit" variant="Secondary" size="lg" text="Add Card" />
-            </form> 
+                <Button
+                    onClick={() => {}}
+                    type="submit"
+                    variant="Secondary"
+                    size="lg"
+                    text="Add Card"
+                    // className="bg-gradient-to-r from-indigo-500 to-blue-400 text-white rounded-md py-3 text-lg font-semibold hover:from-indigo-700 hover:to-blue-600 mt-3"
+                />
+            </form>
         </>
-    )
-}
+    )}
+            // <form onSubmit={
+            //     handleSubmit
+            // } >
+            //     <div className="title">
+            //         <label htmlFor="title">Title</label>
+            //         <input type="text" id="title" value={title} onChange={handleTitle} className="border-1" />
+            //     </div>
+            //     <div className="type">
+            //         <label htmlFor="type">Type</label>
+            //         <select name="type" id="type" onChange={handleType} className="border-1">
+            //             <option value="" disabled selected>Select Type</option>
+            //             <option value="doc">Doc</option>
+            //             <option value="tweet">Tweet</option>
+            //             <option value="video">Video</option>
+            //         </select>
+            //     </div>
+            //     {type == 'tweet' && <TweetInput data={data} setData={setData}/>}
+            //     {type === 'doc' && <DocInput data={data} setData={setData}/>}
+            //     {type === 'video' && <VideoInput data={data} setData={setData}/>}
+            //     <div className="tags">
+            //         <label htmlFor="tags">Tags</label>
+            //         <input value={tags} onChange={handleTags} type="text" id="tags" placeholder="Add tags separated by commas" />
+            //     </div>
+            //     <Button onClick={() => {}} type="submit" variant="Secondary" size="lg" text="Add Card" />
+            // </form> 
+    //     </>
+    // )
+// }
 
 function TweetInput(props: { data: string, setData: React.Dispatch<React.SetStateAction<string>> }) {
-    function handleData(event: React.ChangeEvent<HTMLTextAreaElement>): void {
+    function handleData(event: React.ChangeEvent<HTMLInputElement>): void {
         props.setData(event.target.value);
     }
 
     return (
-        <div>
-            <label htmlFor="tweet">Document</label>
-            <textarea onChange={handleData} value={props.data} name="data" id="tweet"></textarea>
+
+        <div className="flex flex-col gap-2 ">
+            <label className='font-semibold text-gray-800 mb-1' htmlFor="video">Video Link</label>
+            <input className="w-full px-3 py-2 border border-gray-300 rounded-md text-base bg-gray-50 focus:outline-none focus:border-indigo-500" onChange={handleData} value={props.data} type="text" id="video" />
         </div>
     )
 }
@@ -119,9 +186,9 @@ function VideoInput(props: { data: string, setData: React.Dispatch<React.SetStat
     }
 
     return (
-        <div>
-            <label htmlFor="video">Video Link</label>
-            <input onChange={handleData} value={props.data} type="text" id="video" />
+        <div className="flex flex-col gap-2 ">
+            <label className='font-semibold text-gray-800 mb-1' htmlFor="video">Video Link</label>
+            <input className="w-full px-3 py-2 border border-gray-300 rounded-md text-base bg-gray-50 focus:outline-none focus:border-indigo-500" onChange={handleData} value={props.data} type="text" id="video" />
         </div>
     )
 }

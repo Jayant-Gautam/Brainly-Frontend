@@ -7,10 +7,11 @@ import Welcome from './Welcome'
 import Home from './Home'
 import AddCard from './AddCard'
 import SharedBrain from './SharedBrain'
+import Tweet from './components/TweetEmbedding'
 
 function App() {
   return(
-    
+      // <Tweet link="https://x.com/gunsnrosesgirl3/status/1960965279040856334"></Tweet>
     <Routes>
       <Route path="/" element={<Welcome/>} />
       <Route path="/signup" element={Background({children: <Signup />})} />

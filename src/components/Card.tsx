@@ -30,9 +30,10 @@ interface propsType {
 
 export default function Card(props: propsType) {
     
-    let style : string = "h-90 w-70";
+    let style : string = "h-100 w-80";
     // let style : string = dimensions[props.type];
     return (
+        // <div className="transform scale-110">
         <div className={"flex flex-col justify-around gap-3 rounded-xl bg-white shadow-xl px-3 pt-5 pb-3" + " " + style}>
             <div className="flex justify-between gap-1 px-1">
                 <div className="flex pt-1">
@@ -48,7 +49,7 @@ export default function Card(props: propsType) {
                     <DeleteIcon size="xl" color="grey" url={props.deleteURL} />
                 </div>
             </div>
-            <div className="overflow-y-auto h-40">
+            <div className="overflow-scroll h-90 scrollbar-hide">
                 {props.children}
             </div>
             <div className="tags">
@@ -60,5 +61,6 @@ export default function Card(props: propsType) {
                 <p className="text-gray-500 text-sm mt-2">{new Date(props.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</p>
             </div>
         </div>
+        // </div>
     )
 }

@@ -1,6 +1,7 @@
 // import { ReactElement } from "react";
 import Card from "./Card";
 import { tagType } from "./interfaceConfig";
+import Tweet from "./TweetEmbedding"
 
 interface propsType {
     title : string;
@@ -37,9 +38,9 @@ function video(props : propsType) {
     return (
         <>
         <Card title={props.title} children={
-        <>
+        <div className="mt-10">
           <iframe className="w-full rounded-xl" src={url} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-        </>
+        </div>
       } type={props.type} tag={props.tag} date={props.date} deleteURL={`content/${props.id}`}/>
         </>
     )
@@ -64,11 +65,9 @@ function tweet(props : propsType) {
 
     return (
         <>
-        <Card title={props.title} children={
+       <Card title={props.title} children={
         <>
-            <p>
-                {props.data}
-            </p>
+          <Tweet link={props.data}/>
         </>
       } type={props.type} tag={props.tag} date={props.date} deleteURL={`content/${props.id}`}/>
         </>
