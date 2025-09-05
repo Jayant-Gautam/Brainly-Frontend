@@ -1,4 +1,3 @@
-import React from 'react';
 import { ArrowRight, Play, Sparkles } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 

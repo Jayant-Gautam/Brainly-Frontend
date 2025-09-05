@@ -7,7 +7,7 @@ interface LoaderProps {
 }
 
 const Loader: React.FC<LoaderProps> = ({ 
-  loadingText = "Organizing your thoughts...",
+  // loadingText = "Organizing your thoughts...",
   showProgress = true 
 }) => {
   const [progress, setProgress] = useState(0);

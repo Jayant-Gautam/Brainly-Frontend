@@ -1,4 +1,3 @@
-import React from 'react';
 import { Brain, Zap, Network, Shield, Search, Lightbulb } from 'lucide-react';
 
 const features = [

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Header from './components/LandingPage/Header';
 import Hero from './components/LandingPage/Hero';
 import Features from './components/LandingPage/Features';
