@@ -1,2 +1,2 @@
-let url:string = "http://localhost:3000/";
+let url:string = "https://brainly-backend-ftgi.onrender.com/";
 export {url};

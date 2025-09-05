@@ -16,20 +16,19 @@ export default function Signup() {
     const navigate = useNavigate();
 
 
-    // const loginData = async (data: userDataType) => {
-    //     let response = await fetch(url + "signin", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(data),
-    //     });
-    //     if (!response.ok) return new Error(`${response.status}`)
-    //     let res = await response.json();
-    //     localStorage.setItem("jsontoken", `${res.jsontoken}`);
-    //     setUsername("");
-    //     setPassword("");
-    // }
+    const loginData = async (data: userDataType) => {
+        let response = await fetch(url + "signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+        if (!response.ok) return new Error(`${response.status}`)
+        let res = await response.json();
+        localStorage.setItem("jsontoken", `${res.jsontoken}`);
+        navigate("/home");
+    }
 
     const signupData = async () => {
         let response = await fetch(url + "signup", {
@@ -42,7 +41,7 @@ export default function Signup() {
         if (!response.ok) return new Error(`${response.status}`)
         else {
             let res = await response.json();
-            navigate("/home");
+            loginData({ username, password });
             alert(res.message);
         }
         setUsername("");
